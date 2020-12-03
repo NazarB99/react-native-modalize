@@ -42,7 +42,7 @@ import { invariant } from './utils/invariant';
 import { composeRefs } from './utils/compose-refs';
 import s from './styles';
 
-const AnimatedKeyboardAvoidingView = Animated.createAnimatedComponent(KeyboardAvoidingView);
+const AnimatedKeyboardAvoidingView = Platform.OS === "android" ? Animated.createAnimatedComponent(KeyboardAvoidingView) : Animated.createAnimatedComponent(View);
 /**
  * When scrolling, it happens than beginScrollYValue is not always equal to 0 (top of the ScrollView).
  * Since we use this to trigger the swipe down gesture animation, we allow a small threshold to
